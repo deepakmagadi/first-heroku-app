@@ -16,7 +16,6 @@ func main() {
 			"message": "You have connected with " + env + " server",
 		})
 	})
-	// test
 	port := os.Getenv("PORT")
 	r.Run(":" + port) // listen and serve on 0.0.0.0:8080
 }
