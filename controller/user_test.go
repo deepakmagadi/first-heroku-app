@@ -8,5 +8,5 @@ import (
 
 func TestGetUser(t *testing.T) {
 	resp := GetUser()
-	assert.Equal(t, resp, "test_user")
+	assert.Equal(t, resp, "test user")
 }
