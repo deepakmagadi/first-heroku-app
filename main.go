@@ -12,7 +12,7 @@ func main() {
 	r := gin.Default()
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": "You have connected with uat server",
+			"message": "You have connected with develop server",
 		})
 	})
 	port := os.Getenv("PORT")
