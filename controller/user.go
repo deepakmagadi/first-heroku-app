@@ -18,7 +18,12 @@ type User struct {
 }
 
 func CreateUser(c *gin.Context) {
-	dsn := "host=localhost user=" + os.Getenv("DB_USER") + " password=" + os.Getenv("DB_PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " port=" + os.Getenv("DB_PORT") + " sslmode=disable TimeZone=Asia/Shanghai"
+	var dsn string
+	if os.Getenv("DATABASE_URL") == "local" {
+		dsn = "host=ec2-54-234-13-16.compute-1.amazonaws.com user=" + os.Getenv("DB_USER") + " password=" + os.Getenv("DB_PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " port=" + os.Getenv("DB_PORT") + ""
+	} else {
+		dsn = os.Getenv("DATABASE_URL")
+	}
 	db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	user := User{
@@ -35,7 +40,12 @@ func CreateUser(c *gin.Context) {
 }
 
 func GetUser(c *gin.Context) {
-	dsn := "host=localhost user=" + os.Getenv("DB_USER") + " password=" + os.Getenv("DB_PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " port=" + os.Getenv("DB_PORT") + " sslmode=disable TimeZone=Asia/Shanghai"
+	var dsn string
+	if os.Getenv("DATABASE_URL") == "local" {
+		dsn = "host=ec2-54-234-13-16.compute-1.amazonaws.com user=" + os.Getenv("DB_USER") + " password=" + os.Getenv("DB_PASSWORD") + " dbname=" + os.Getenv("DB_NAME") + " port=" + os.Getenv("DB_PORT") + ""
+	} else {
+		dsn = os.Getenv("DATABASE_URL")
+	}
 	db, _ := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	var user []User
