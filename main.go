@@ -29,6 +29,11 @@ func main() {
 
 	r := gin.Default()
 	//env := os.Getenv("ENV")
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "You have connected with develop server",
+		})
+	})
 	r.POST("/user", controller.CreateUser)
 	r.GET("/user", controller.GetUser)
 	port := os.Getenv("PORT")
