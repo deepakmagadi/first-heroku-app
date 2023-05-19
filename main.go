@@ -43,5 +43,5 @@ func main() {
 	r.POST("/user", controller.CreateUser)
 	r.GET("/user", controller.GetUser)
 	port := os.Getenv("PORT")
-	r.Run(":" + port) // listen and serve on 0.0.0.0:8080
+	r.Run(":" + port) // listen and serve on 0.0.0.0:3000
 }
